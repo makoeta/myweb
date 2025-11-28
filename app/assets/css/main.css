@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+body {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  font-size: 20pt;
+}
+
+:root {
+  --reka-navigation-menu-viewport-width: auto; /* Oder eine feste Breite wie 300px */
+}
