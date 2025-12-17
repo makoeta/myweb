@@ -1,13 +1,14 @@
 <template>
-  <UBlogPosts>
+  <div class="grid grid-cols-2 gap-4 justify-between">
     <UBlogPost
       v-for="(post, index) in page"
       :key="index"
       v-bind="post"
       :to="post.path"
+      class="w-152"
     >
     </UBlogPost>
-  </UBlogPosts>
+  </div>
 </template>
 
 <script lang="ts" setup>

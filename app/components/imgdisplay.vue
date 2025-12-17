@@ -3,10 +3,11 @@ const pauseOnHover = true;
 </script>
 
 <template>
-  <div class="relative w-full h-[400px] bg-muted overflow-hidden">
+  <div class="relative w-full h-[400px] bg-muted overflow-hidden m-auto">
     <div>
       <UMarquee
         reverse
+        pause-on-hover
         orientation="vertical"
         :overlay="false"
         :ui="{
@@ -25,6 +26,7 @@ const pauseOnHover = true;
       </UMarquee>
       <UMarquee
         orientation="vertical"
+        pause-on-hover
         :overlay="false"
         :ui="{
           root: '[--duration:40s] absolute w-[460px] -top-[400px] left-[480px] h-[1160px] transform-3d rotate-x-55 rotate-y-0 rotate-z-30',
@@ -45,6 +47,7 @@ const pauseOnHover = true;
     <div class="relative left-[1170px] top-5">
       <UMarquee
         reverse
+        pause-on-hover
         orientation="vertical"
         :overlay="false"
         :ui="{
@@ -62,6 +65,7 @@ const pauseOnHover = true;
         />
       </UMarquee>
       <UMarquee
+        pause-on-hover
         orientation="vertical"
         :overlay="false"
         :ui="{

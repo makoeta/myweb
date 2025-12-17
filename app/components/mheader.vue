@@ -52,7 +52,7 @@ const items = computed<NavigationMenuItem[]>(() => [
     <Mheaderitems orientation="horizontal" />
 
     <template #right>
-      <UColorModeButton />
+      <UColorModeSelect />
     </template>
 
     <template #body>
