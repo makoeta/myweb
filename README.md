@@ -1,103 +1,48 @@
-# Nuxt Minimal Starter
+# myweb
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> Personal portfolio of Max König — software developer & student building web apps, IoT and AI projects.
 
-## Setup
+![Nuxt](https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt&logoColor=white)
+![Vue](https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white)
+![Nuxt UI](https://img.shields.io/badge/Nuxt%20UI-4-00DC82?logo=nuxt&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-r185-000000?logo=threedotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
 
-Make sure to install dependencies:
+## Develop
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+npm run dev      # http://localhost:3000
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Build
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
+npm run build    # Node server build (.output/)
+npm run generate # fully static site
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Content
 
-## Content & CMS
-
-The site content lives as markdown files under `content/`:
+Site content lives as markdown under `content/`:
 
 - `content/projects/personal/*.md` — personal projects
 - `content/projects/student/*.md` — student projects
 - `content/career/*.md` — work experience
 
-There is a built-in CMS at **`/admin`** to manage these without editing files by hand.
-It lets you create, edit and delete projects and work experience, and upload images
-(stored in `public/uploads/`). Changes are written straight to the markdown files, so
-they show up in git and can be committed/deployed like normal content.
+A built-in CMS at **`/admin`** lets you create, edit, delete entries and upload images
+(to `public/uploads/`) without hand-editing files. Changes are written straight to the
+markdown files, so they show up in git like normal content.
 
-### Admin password
-
-The CMS is protected by a password. It is read from runtime config and can be set via
-environment variables (defaults to `changeme` in development — **change it before deploying**):
-
-```bash
-NUXT_ADMIN_PASSWORD=your-strong-password
-NUXT_ADMIN_SECRET=some-random-string   # used to sign the session cookie
-```
-
-> Note: the CMS writes files on the server, so it works with a Node deployment
-> (`npm run build` + `node .output/server`) or locally in `npm run dev`. It is not
-> available on a fully static (`npm run generate`) host, since there is no server to
-> write files. Edit locally and redeploy in that case.
+> The admin password is read from runtime config — set it before deploying:
+>
+> ```bash
+> NUXT_ADMIN_PASSWORD=your-strong-password
+> NUXT_ADMIN_SECRET=some-random-string   # signs the session cookie
+> ```
+>
+> The CMS writes files on the server, so it needs a Node deployment
+> (`npm run build` + `node .output/server`) or local `npm run dev` — not a static
+> (`npm run generate`) host.

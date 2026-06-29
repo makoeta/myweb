@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  # deploy when a GitHub Release is published
+  release:
+    types: [published]
+  # allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# permissions the deploy job needs to publish to Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# only one Pages deploy at a time; don't cancel an in-progress one
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate static site
+        run: npm run generate
+        env:
+          # github_pages preset writes .nojekyll so _-prefixed assets are served
+          NITRO_PRESET: github_pages
+          # base path for a project page: https://<user>.github.io/<repo>/
+          NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}
+          # impressum details (repository Variables, not Secrets)
+          NUXT_PUBLIC_IMPRINT_NAME: ${{ vars.NUXT_PUBLIC_IMPRINT_NAME }}
+          NUXT_PUBLIC_IMPRINT_STREET: ${{ vars.NUXT_PUBLIC_IMPRINT_STREET }}
+          NUXT_PUBLIC_IMPRINT_CITY: ${{ vars.NUXT_PUBLIC_IMPRINT_CITY }}
+          NUXT_PUBLIC_IMPRINT_COUNTRY: ${{ vars.NUXT_PUBLIC_IMPRINT_COUNTRY }}
+          NUXT_PUBLIC_IMPRINT_EMAIL: ${{ vars.NUXT_PUBLIC_IMPRINT_EMAIL }}
+          NUXT_PUBLIC_IMPRINT_PHONE: ${{ vars.NUXT_PUBLIC_IMPRINT_PHONE }}
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

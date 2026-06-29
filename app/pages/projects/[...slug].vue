@@ -1,11 +1,18 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const { data: doc } = await useAsyncData(`project-${route.path}`, async () => {
-  const personal = await queryCollection("personalProject").path(route.path).first();
-  if (personal) return personal;
-  return await queryCollection("studentProject").path(route.path).first();
-});
+const { data: doc } = await useAsyncData(
+  `project-${route.path}`,
+  async () => {
+    const personal = await queryCollection("personalProject").path(route.path).first();
+    if (personal) return personal;
+    return await queryCollection("studentProject").path(route.path).first();
+  },
+  {
+    getCachedData: (key, nuxtApp) =>
+      nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
+  }
+);
 
 if (!doc.value) {
   throw createError({ statusCode: 404, statusMessage: "project not found" });

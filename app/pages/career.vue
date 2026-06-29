@@ -5,8 +5,16 @@ useSeo({
     "Max König's professional path — software engineering roles, internships and working-student positions.",
 });
 
-const { data: jobs } = await useAsyncData("career", () =>
-  queryCollection("career").all()
+// getCachedData reuses the SSR payload on in-app navigation: without it,
+// useAsyncData re-runs queryCollection in the browser, where the collection
+// dump isn't loaded, so it returns empty until a hard reload.
+const { data: jobs } = await useAsyncData(
+  "career",
+  () => queryCollection("career").all(),
+  {
+    getCachedData: (key, nuxtApp) =>
+      nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
+  }
 );
 </script>
 
