@@ -3,52 +3,42 @@ import type { NavigationMenuItem } from "@nuxt/ui";
 const props = defineProps({
   orientation: String,
 });
-const route = useRoute();
 
 const items = ref<NavigationMenuItem[][]>([
   [
     {
       label: "projects",
       icon: "i-lucide-book-open",
+      to: "/projects",
       children: [
         {
           label: "personal projects",
           description: "my personal projects.",
           icon: "i-lucide-house",
+          to: "/projects/personal",
         },
         {
           label: "student projects",
           description: "my projects as a student.",
           icon: "i-lucide-cloud-download",
+          to: "/projects/student",
         },
         {
-          label: "thesis",
-          icon: "i-lucide-smile",
-          description: "my thesis.",
+          label: "research",
+          icon: "i-lucide-graduation-cap",
+          description: "my theses and research papers.",
+          to: "/projects/research",
         },
       ],
     },
     {
       label: "career",
-      icon: "i-lucide-database",
-      children: [
-        {
-          label: "acadamic",
-          icon: "i-lucide-file-text",
-          description: "my degrees and qualification",
-          to: "/docs/composables/define-shortcuts",
-        },
-        {
-          label: "professional",
-          icon: "i-lucide-file-text",
-          description: "my work experience",
-          to: "/docs/composables/use-overlay",
-        },
-      ],
+      icon: "i-lucide-rocket",
+      to: "/career",
     },
     {
       label: "contact",
-      icon: "i-lucide-database",
+      icon: "i-lucide-mail",
       to: "/contact",
     },
   ],

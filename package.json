@@ -17,15 +17,18 @@
     "@nuxt/icon": "^2.1.0",
     "@nuxt/ui": "^4.2.1",
     "@tailwindcss/vite": "^4.1.17",
-    "better-sqlite3": "^12.4.6",
     "eslint": "^9.39.1",
     "nuxt": "^4.2.1",
+    "three": "^0.185.0",
     "typescript": "^5.9.3",
     "vite": "^7.2.4",
     "vue": "^3.5.25",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.115",
+    "@iconify-json/simple-icons": "^1.2.88",
+    "@types/three": "^0.185.0",
     "tailwindcss": "^4.1.17"
   }
 }

@@ -73,3 +73,31 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Content & CMS
+
+The site content lives as markdown files under `content/`:
+
+- `content/projects/personal/*.md` — personal projects
+- `content/projects/student/*.md` — student projects
+- `content/career/*.md` — work experience
+
+There is a built-in CMS at **`/admin`** to manage these without editing files by hand.
+It lets you create, edit and delete projects and work experience, and upload images
+(stored in `public/uploads/`). Changes are written straight to the markdown files, so
+they show up in git and can be committed/deployed like normal content.
+
+### Admin password
+
+The CMS is protected by a password. It is read from runtime config and can be set via
+environment variables (defaults to `changeme` in development — **change it before deploying**):
+
+```bash
+NUXT_ADMIN_PASSWORD=your-strong-password
+NUXT_ADMIN_SECRET=some-random-string   # used to sign the session cookie
+```
+
+> Note: the CMS writes files on the server, so it works with a Node deployment
+> (`npm run build` + `node .output/server`) or locally in `npm run dev`. It is not
+> available on a fully static (`npm run generate`) host, since there is no server to
+> write files. Edit locally and redeploy in that case.

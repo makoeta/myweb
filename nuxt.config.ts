@@ -12,5 +12,14 @@ export default defineNuxtConfig({
     "@nuxt/ui",
   ],
   pages: true,
+  // Static site: fully prerendered for GitHub Pages.
+  // Base URL is injected at build time via NUXT_APP_BASE_URL (see deploy workflow).
+  ssr: true,
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/"],
+    },
+  },
   vite: { plugins: [tailwindcss()] },
 });

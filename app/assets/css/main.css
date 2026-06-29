@@ -13,3 +13,9 @@ body {
 :root {
   --reka-navigation-menu-viewport-width: auto; /* Oder eine feste Breite wie 300px */
 }
+
+/* pure black dark mode instead of the default dark-gray/blue */
+.dark {
+  --ui-bg: var(--color-black);
+  --ui-bg-muted: var(--color-neutral-950);
+}

@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
+import { SOCIAL_LINKS } from "~/utils/site";
 
 const items: NavigationMenuItem[] = [
   {
-    label: "code base",
-    to: "https://go.nuxt.com/figma-ui",
-    target: "_blank",
+    label: "projects",
+    to: "/projects",
   },
   {
-    label: "legal",
-    to: "https://stackblitz.com/edit/nuxt-ui",
-    target: "_blank",
+    label: "career",
+    to: "/career",
+  },
+  {
+    label: "impressum",
+    to: "/impressum",
   },
 ];
 </script>
@@ -19,7 +22,7 @@ const items: NavigationMenuItem[] = [
   <UFooter>
     <template #left>
       <p class="text-muted text-sm">
-        Copyright © {{ new Date().getFullYear() }}
+        Copyright © {{ new Date().getFullYear() }} Maximilian König
       </p>
     </template>
 
@@ -27,28 +30,14 @@ const items: NavigationMenuItem[] = [
 
     <template #right>
       <UButton
-        icon="i-simple-icons-mail"
+        v-for="s in SOCIAL_LINKS"
+        :key="s.label"
+        :icon="s.icon"
+        :to="s.to"
+        :aria-label="s.label"
         color="neutral"
         variant="ghost"
-        to="https://go.nuxt.com/discord"
         target="_blank"
-        aria-label="Discord"
-      />
-      <UButton
-        icon="i-simple-icons-linkedin"
-        color="neutral"
-        variant="ghost"
-        to="https://go.nuxt.com/x"
-        target="_blank"
-        aria-label="X"
-      />
-      <UButton
-        icon="i-simple-icons-github"
-        color="neutral"
-        variant="ghost"
-        to="https://github.com/nuxt/nuxt"
-        target="_blank"
-        aria-label="GitHub"
       />
     </template>
   </UFooter>

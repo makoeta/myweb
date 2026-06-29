@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#020617"/>
+  <g stroke="#1e293b" stroke-width="1">
+    <path d="M0 56.25H800M0 112.5H800M0 168.75H800M0 225H800M0 281.25H800M0 337.5H800M0 393.75H800"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450"/>
+  </g>
+  <circle cx="400" cy="190" r="70" fill="none" stroke="#10b981" stroke-width="2" opacity="0.9"/>
+  <circle cx="400" cy="190" r="70" fill="#10b981" opacity="0.08"/>
+  <text x="400" y="200" text-anchor="middle" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="40" font-weight="600">&lt;/&gt;</text>
+  <text x="400" y="320" text-anchor="middle" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="22" letter-spacing="2">project preview</text>
+</svg>
