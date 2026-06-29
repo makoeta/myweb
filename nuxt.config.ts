@@ -12,6 +12,20 @@ export default defineNuxtConfig({
     "@nuxt/ui",
   ],
   pages: true,
+  runtimeConfig: {
+    public: {
+      // Impressum (legal notice) details — filled from .env at build time so the
+      // private postal address is not committed. Override via NUXT_PUBLIC_IMPRINT_*.
+      imprint: {
+        name: "",
+        street: "",
+        city: "",
+        country: "",
+        email: "",
+        phone: "",
+      },
+    },
+  },
   // Static site: fully prerendered for GitHub Pages.
   // Base URL is injected at build time via NUXT_APP_BASE_URL (see deploy workflow).
   ssr: true,
