@@ -3,7 +3,7 @@ import ProjectDisplay from "~/components/projectDisplay.vue";
 useSeo({
   title: "projects",
   description:
-    "A selection of things Max König has built — personal and student software, web, IoT and AI projects.",
+    "A selection of things Maximilian König has built — personal and student software, web, IoT and AI projects.",
 });
 </script>
 

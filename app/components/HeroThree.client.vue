@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import * as THREE from "three";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 
 const container = ref<HTMLDivElement | null>(null);
 const colorMode = useColorMode();
 
 let renderer: THREE.WebGLRenderer | undefined;
+let composer: EffectComposer | undefined;
+let bloomPass: UnrealBloomPass | undefined;
 let scene: THREE.Scene | undefined;
 let camera: THREE.PerspectiveCamera | undefined;
 let group: THREE.Group | undefined;
@@ -106,7 +112,8 @@ function applyThemeColor() {
 // render a single static frame — used for reduced-motion and after resizes
 function renderFrame() {
   if (!renderer || !scene || !camera) return;
-  renderer.render(scene, camera);
+  if (composer) composer.render();
+  else renderer.render(scene, camera);
 }
 
 function startLoop() {
@@ -141,7 +148,7 @@ function animate() {
     camera.lookAt(0, 0, 0);
   }
 
-  renderer!.render(scene!, camera!);
+  composer!.render();
 }
 
 function tryInit() {
@@ -164,6 +171,20 @@ function tryInit() {
   // recover gracefully if the GPU drops the context (tab switches, etc.)
   renderer.domElement.addEventListener("webglcontextlost", onContextLost);
   renderer.domElement.addEventListener("webglcontextrestored", onContextRestored);
+
+  // bloom post-processing so the additive vertices actually glow
+  composer = new EffectComposer(renderer);
+  composer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  composer.setSize(w, h);
+  composer.addPass(new RenderPass(scene, camera));
+  bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(w, h),
+    0.85, // strength
+    0.6, // radius
+    0.15 // threshold — only the bright dots/edges bloom
+  );
+  composer.addPass(bloomPass);
+  composer.addPass(new OutputPass());
 
   buildObject();
   if (reducedMotion) {
@@ -194,6 +215,7 @@ function onResize() {
   const { clientWidth: w, clientHeight: h } = container.value;
   if (w === 0 || h === 0) return;
   renderer.setSize(w, h);
+  composer?.setSize(w, h);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
   if (!raf) renderFrame(); // keep the static frame correct while paused
@@ -294,6 +316,8 @@ onBeforeUnmount(() => {
   renderer?.domElement.removeEventListener("webglcontextrestored", onContextRestored);
   for (const g of geometries) g.dispose();
   for (const m of materials) m.dispose();
+  bloomPass?.dispose();
+  composer?.dispose();
   renderer?.dispose();
   if (renderer?.domElement && container.value?.contains(renderer.domElement)) {
     container.value.removeChild(renderer.domElement);

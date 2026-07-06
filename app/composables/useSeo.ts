@@ -1,7 +1,7 @@
 // Per-page SEO helper: sets the document title (suffixed with the site name)
 // plus matching Open Graph / Twitter card tags so shared links — chiefly on
 // LinkedIn — render a proper preview instead of a bare URL.
-export const SITE_NAME = "Max König";
+export const SITE_NAME = "Maximilian König";
 
 interface SeoOptions {
   /** page label, e.g. "projects". Omit on the landing page. */

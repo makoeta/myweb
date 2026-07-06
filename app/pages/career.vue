@@ -2,7 +2,7 @@
 useSeo({
   title: "career",
   description:
-    "Max König's professional path — software engineering roles, internships and working-student positions.",
+    "Maximilian König's professional path — software engineering roles, internships and working-student positions.",
 });
 
 // getCachedData reuses the SSR payload on in-app navigation: without it,

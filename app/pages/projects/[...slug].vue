@@ -21,7 +21,7 @@ if (!doc.value) {
 useSeo({
   title: doc.value?.title ?? "project",
   description:
-    doc.value?.description || `${doc.value?.title ?? "A project"} by Max König.`,
+    doc.value?.description || `${doc.value?.title ?? "A project"} by Maximilian König.`,
   image: doc.value?.image || undefined,
 });
 </script>

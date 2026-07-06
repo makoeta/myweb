@@ -35,5 +35,10 @@ export default defineNuxtConfig({
       routes: ["/"],
     },
   },
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ["@vue/devtools-core", "@vue/devtools-kit"],
+    },
+  },
 });

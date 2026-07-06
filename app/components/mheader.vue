@@ -47,7 +47,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 
 <template>
   <UHeader toggle-side="left">
-    <template #title> Max König </template>
+    <template #title> Maximilian König </template>
 
     <Mheaderitems orientation="horizontal" />
 

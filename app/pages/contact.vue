@@ -2,7 +2,7 @@
 import { SOCIAL_LINKS } from "~/utils/site";
 useSeo({
   title: "contact",
-  description: "Get in touch with Max König.",
+  description: "Get in touch with Maximilian König.",
 });
 
 const links = SOCIAL_LINKS.map((s) => ({ ...s, label: s.label.toLowerCase() }));
@@ -32,6 +32,14 @@ const links = SOCIAL_LINKS.map((s) => ({ ...s, label: s.label.toLowerCase() }));
       >
         {{ link.label }}
       </UButton>
+      <MailButton
+        color="neutral"
+        variant="subtle"
+        size="lg"
+        class="justify-start"
+      >
+        email
+      </MailButton>
     </div>
   </UContainer>
 </template>

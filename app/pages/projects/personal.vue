@@ -2,7 +2,7 @@
 import ProjectDisplay from "~/components/projectDisplay.vue";
 useSeo({
   title: "personal projects",
-  description: "Things Max König builds for fun and curiosity.",
+  description: "Things Maximilian König builds for fun and curiosity.",
 });
 </script>
 

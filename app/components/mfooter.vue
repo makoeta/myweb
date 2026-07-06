@@ -39,6 +39,7 @@ const items: NavigationMenuItem[] = [
         variant="ghost"
         target="_blank"
       />
+      <MailButton color="neutral" variant="ghost" />
     </template>
   </UFooter>
 </template>

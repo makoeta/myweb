@@ -4,7 +4,7 @@ import type { BadgeProps } from "@nuxt/ui";
 useSeo({
   title: "research",
   description:
-    "Max König's scientific work — bachelor & master theses and research papers.",
+    "Maximilian König's scientific work — bachelor & master theses and research papers.",
 });
 
 type Status = "done" | "ongoing" | "planned";
