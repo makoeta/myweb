@@ -32,6 +32,11 @@ const items = ref<NavigationMenuItem[][]>([
       ],
     },
     {
+      label: "skills",
+      icon: "i-lucide-cpu",
+      to: "/skills",
+    },
+    {
       label: "career",
       icon: "i-lucide-rocket",
       to: "/career",

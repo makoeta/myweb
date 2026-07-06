@@ -17,7 +17,7 @@ let roleTimer: ReturnType<typeof setInterval> | undefined;
 onMounted(() => {
   roleTimer = setInterval(() => {
     roleIndex.value = (roleIndex.value + 1) % roles.length;
-  }, 2600);
+  }, 4200);
 });
 onBeforeUnmount(() => clearInterval(roleTimer));
 
