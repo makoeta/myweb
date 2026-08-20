@@ -30,12 +30,12 @@ const papers: Paper[] = [
   },
   {
     kind: "Research Paper",
-    title: "In-Context Reinforcement Learning",
+    title: "In-Context Reinforcement Learning Experts",
     status: "ongoing",
     description:
-      "An ongoing research paper on in-context reinforcement learning, built around the FastICRL project.",
-    to: "/projects/student/fasticrl",
-    cta: "see the FastICRL project",
+      "An ongoing research paper on in-context reinforcement learning, built around the FastICLE project.",
+    to: "/projects/student/fasticle",
+    cta: "see the FastICLE project",
   },
   {
     kind: "Master Thesis",

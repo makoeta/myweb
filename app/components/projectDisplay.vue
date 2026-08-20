@@ -39,6 +39,7 @@ const { data: page } = await useAsyncData(
       :ui="{
         header: 'bg-default',
         image: 'object-contain object-center',
+        description: 'text-xs',
       }"
     />
   </div>

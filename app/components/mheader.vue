@@ -23,13 +23,13 @@ const items = computed<NavigationMenuItem[]>(() => [
         description: "My personal projects.",
         to: "/projects/personal",
       },
-      {
-        label: "research",
-        icon: "i-lucide-graduation-cap",
-        description: "My theses and research papers.",
-        to: "/projects/research",
-      },
     ],
+  },
+  {
+    label: "research",
+    to: "/research",
+    icon: "i-lucide-graduation-cap",
+    active: route.path.startsWith("/research"),
   },
   {
     label: "career",

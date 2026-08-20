@@ -33,6 +33,8 @@ const categories: Category[] = [
     title: "frameworks",
     icon: "i-lucide-layout-template",
     items: [
+      { name: "LangChain", icon: "i-simple-icons-langchain", note: "LLM app orchestration" },
+      { name: "Agno", icon: "i-lucide-bot", note: "agentic AI framework" },
       { name: "Vue / Nuxt", icon: "i-simple-icons-nuxt", note: "frontend framework of choice" },
       { name: "FastAPI", icon: "i-simple-icons-fastapi", note: "Python web APIs" },
       { name: "Angular", icon: "i-simple-icons-angular", note: "component-based frontends" },

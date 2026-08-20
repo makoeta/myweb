@@ -23,13 +23,12 @@ const items = ref<NavigationMenuItem[][]>([
           icon: "i-lucide-cloud-download",
           to: "/projects/student",
         },
-        {
-          label: "research",
-          icon: "i-lucide-graduation-cap",
-          description: "my theses and research papers.",
-          to: "/projects/research",
-        },
       ],
+    },
+    {
+      label: "research",
+      icon: "i-lucide-graduation-cap",
+      to: "/research",
     },
     {
       label: "skills",
