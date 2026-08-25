@@ -17,7 +17,7 @@ export function useSeo({ title, description, image }: SeoOptions) {
   const absImage = image
     ? image.startsWith("http")
       ? image
-      : `${url.origin}${image}`
+      : `${url.origin}${withBase(image)}`
     : undefined;
 
   useHead({ title: fullTitle });

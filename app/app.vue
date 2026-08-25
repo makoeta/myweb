@@ -7,15 +7,15 @@ const url = useRequestURL();
 
 useHead({
   htmlAttrs: { lang: "en" },
-  link: [{ rel: "icon", href: "/favicon.ico" }],
+  link: [{ rel: "icon", href: withBase("/favicon.ico") }],
 });
 
 useSeoMeta({
   ogSiteName: SITE_NAME,
   ogType: "website",
-  ogImage: `${url.origin}/og.png`,
+  ogImage: `${url.origin}${withBase("/og.png")}`,
   twitterCard: "summary_large_image",
-  twitterImage: `${url.origin}/og.png`,
+  twitterImage: `${url.origin}${withBase("/og.png")}`,
 });
 </script>
 

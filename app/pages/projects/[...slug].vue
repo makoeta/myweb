@@ -64,7 +64,7 @@ useSeo({
 
     <img
       v-if="doc.image"
-      :src="doc.image"
+      :src="withBase(doc.image)"
       :alt="doc.title"
       class="w-full rounded-lg border border-default bg-white"
     />
