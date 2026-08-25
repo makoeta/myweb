@@ -121,10 +121,10 @@ const { data: jobs } = await useAsyncData(
           </UButton>
         </ScrollReveal>
         <ScrollReveal :delay="80">
-          <ProjectDisplay collection-name="studentProject" :limit="3" />
-        </ScrollReveal>
-        <ScrollReveal :delay="160">
-          <ProjectDisplay collection-name="personalProject" :limit="2" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+            <ProjectDisplay collection-name="studentProject" :limit="3" bare />
+            <ProjectDisplay collection-name="personalProject" :limit="1" bare />
+          </div>
         </ScrollReveal>
       </section>
 
