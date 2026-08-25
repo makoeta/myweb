@@ -15,7 +15,11 @@ const { data: page } = await useAsyncData(
   `projects-${props.collectionName}-${props.limit}`,
   () => {
     const q = queryCollection(props.collectionName as "personalProject");
-    return (props.limit ? q.limit(props.limit) : q).all();
+    // Limited (spotlight) usage — e.g. the landing page — shows only
+    // hand-picked `featured` entries. The full listing pages pass
+    // limit=0 and intentionally see everything, featured or not.
+    const filtered = props.limit ? q.where("featured", "=", true) : q;
+    return (props.limit ? filtered.limit(props.limit) : filtered).all();
   },
   {
     getCachedData: (key, nuxtApp) =>
