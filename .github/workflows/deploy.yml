@@ -35,6 +35,15 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      # Node 22 ships an older npm than what generates package-lock.json
+      # locally. Version drift here has repeatedly produced lockfiles that
+      # `npm ci` on the older bundled npm rejects as "out of sync" (missing
+      # entries for optional/peer deps like cac, commander, oxc-parser
+      # platform binaries) even though the lockfile is valid. Pin npm to
+      # the version used to generate the lockfile to keep them in lockstep.
+      - name: Use matching npm version
+        run: npm install -g npm@11.12.1
+
       - name: Install dependencies
         run: npm ci
 
