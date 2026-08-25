@@ -4,6 +4,9 @@ on:
   # deploy when a GitHub Release is published
   release:
     types: [published]
+  # deploy on every push to main
+  push:
+    branches: [main]
   # allow manual runs from the Actions tab
   workflow_dispatch:
 
