@@ -28,11 +28,14 @@ export default defineNuxtConfig({
   },
   // Static site: fully prerendered for GitHub Pages.
   // Base URL is injected at build time via NUXT_APP_BASE_URL (see deploy workflow).
-  ssr: true,
+  ssr: false,
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/"],
+      // "/card" is intentionally not linked from the main nav (it's a
+      // direct/QR link handed to people, not a page to browse to), so
+      // crawlLinks won't discover it on its own — list it explicitly.
+      routes: ["/", "/card"],
     },
   },
   vite: {
