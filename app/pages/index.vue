@@ -61,12 +61,12 @@ const { data: jobs } = await useAsyncData(
           <span class="opacity-70">~</span> whoami
         </p>
 
-        <h1 class="text-5xl sm:text-7xl tracking-tight">
+        <h1 class="text-4xl sm:text-7xl tracking-tight wrap-break-word">
           <span class="text-primary/60 mr-1">&gt;</span>
           <DecryptText text="Maximilian König" :interval="32" :cycles-per-char="6" />
         </h1>
 
-        <p class="text-muted max-w-full text-lg whitespace-nowrap">
+        <p class="text-muted max-w-full text-base sm:text-lg">
           software developer &amp; student — building
           <span class="text-default">
             <DecryptText
