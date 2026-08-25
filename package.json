@@ -32,5 +32,8 @@
     "@iconify-json/simple-icons": "^1.2.88",
     "@types/three": "^0.185.0",
     "tailwindcss": "^4.1.17"
+  },
+  "overrides": {
+    "oxc-parser": "^0.147.0"
   }
 }
