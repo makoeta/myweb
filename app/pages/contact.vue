@@ -40,6 +40,16 @@ const links = SOCIAL_LINKS.map((s) => ({ ...s, label: s.label.toLowerCase() }));
       >
         email
       </MailButton>
+      <UButton
+        to="/impressum"
+        icon="i-lucide-scale"
+        color="neutral"
+        variant="subtle"
+        size="lg"
+        class="justify-start"
+      >
+        impressum
+      </UButton>
     </div>
   </UContainer>
 </template>
