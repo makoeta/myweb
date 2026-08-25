@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProjectDisplay from "~/components/projectDisplay.vue";
 import { SOCIAL_LINKS } from "~/utils/site";
+import { PAPERS, RESEARCH_STATUS_META } from "~/utils/research";
 
 useSeo({
   description:
@@ -135,28 +136,65 @@ const { data: jobs } = await useAsyncData(
             all
           </UButton>
         </ScrollReveal>
-        <ul class="flex flex-col">
+        <ul class="grid grid-cols-1 gap-5 sm:grid-cols-3">
           <ScrollReveal
             v-for="(job, i) in jobs"
             :key="job.path"
             as="li"
             :delay="i * 90"
-            class="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-default py-3 last:border-b-0"
           >
-            <span class="text-muted font-mono text-xs">
-              {{ job.start }} → {{ job.current ? "present" : job.end }}
-            </span>
-            <span class="text-default">{{ job.role }}</span>
-            <span class="text-muted">· {{ job.company }}</span>
-            <UBadge
-              v-if="job.current"
-              color="primary"
-              variant="subtle"
-              size="sm"
-              class="font-mono"
-            >
-              now
-            </UBadge>
+            <UCard class="h-full" :ui="{ body: 'p-6 sm:p-7' }">
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-muted font-mono text-sm">
+                    {{ job.start }} → {{ job.current ? "present" : job.end }}
+                  </span>
+                  <UBadge
+                    v-if="job.current"
+                    color="primary"
+                    variant="subtle"
+                    class="font-mono"
+                  >
+                    now
+                  </UBadge>
+                </div>
+                <h3 class="text-xl text-default">{{ job.role }}</h3>
+                <p class="text-muted text-base">{{ job.company }}</p>
+              </div>
+            </UCard>
+          </ScrollReveal>
+        </ul>
+      </section>
+
+      <!-- research -->
+      <section class="flex flex-col gap-4">
+        <ScrollReveal as="div" class="flex items-center justify-between">
+          <h2 class="text-xl">research…</h2>
+          <UButton to="/research" variant="link" trailing-icon="i-lucide-arrow-right">
+            all
+          </UButton>
+        </ScrollReveal>
+        <ul class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <ScrollReveal
+            v-for="(p, i) in PAPERS"
+            :key="p.kind"
+            as="li"
+            :delay="i * 90"
+          >
+            <UCard class="h-full" :ui="{ body: 'p-6 sm:p-7' }">
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-muted font-mono text-xs uppercase tracking-wide">
+                    {{ p.kind }}
+                  </span>
+                  <UBadge :color="RESEARCH_STATUS_META[p.status].color" variant="subtle">
+                    {{ RESEARCH_STATUS_META[p.status].label }}
+                  </UBadge>
+                </div>
+                <h3 class="text-xl text-default">{{ p.title }}</h3>
+                <p class="text-muted text-base">{{ p.description }}</p>
+              </div>
+            </UCard>
           </ScrollReveal>
         </ul>
       </section>

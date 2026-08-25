@@ -1,59 +1,11 @@
 <script setup lang="ts">
-import type { BadgeProps } from "@nuxt/ui";
+import { PAPERS, RESEARCH_STATUS_META } from "~/utils/research";
 
 useSeo({
   title: "research",
   description:
     "Maximilian König's scientific work — bachelor & master theses and research papers.",
 });
-
-type Status = "done" | "ongoing" | "planned";
-
-interface Paper {
-  kind: string;
-  title: string;
-  status: Status;
-  description: string;
-  to?: string;
-  cta?: string;
-}
-
-const papers: Paper[] = [
-  {
-    kind: "Bachelor Thesis",
-    title: "Web Application Frameworks",
-    status: "done",
-    description:
-      "A study of modern web application frameworks. Completed — reach out if you'd like to know more.",
-    to: "/contact",
-    cta: "contact me for more information",
-  },
-  {
-    kind: "Research Paper",
-    title: "In-Context Reinforcement Learning Experts",
-    status: "ongoing",
-    description:
-      "An ongoing research paper on in-context reinforcement learning, built around the FastICLE project.",
-    to: "/projects/student/fasticle",
-    cta: "see the FastICLE project",
-  },
-  {
-    kind: "Master Thesis",
-    title: "Master Thesis",
-    status: "planned",
-    description:
-      "Planned to build on top of my in-context reinforcement learning research paper.",
-  },
-];
-
-const statusMeta: Record<
-  Status,
-  { label: string; color: BadgeProps["color"] }
-> = {
-  done: { label: "done", color: "success" },
-  ongoing: { label: "ongoing", color: "info" },
-  planned: { label: "planned", color: "neutral" },
-};
 </script>
 
 <template>
@@ -67,7 +19,7 @@ const statusMeta: Record<
     </div>
 
     <div class="flex flex-col gap-4">
-      <UCard v-for="p in papers" :key="p.kind">
+      <UCard v-for="p in PAPERS" :key="p.kind">
         <div class="flex flex-col gap-3">
           <div class="flex items-start justify-between gap-3">
             <div class="flex flex-col gap-1">
@@ -76,8 +28,8 @@ const statusMeta: Record<
               >{{ p.kind }}</span>
               <h2 class="text-lg">{{ p.title }}</h2>
             </div>
-            <UBadge :color="statusMeta[p.status].color" variant="subtle">
-              {{ statusMeta[p.status].label }}
+            <UBadge :color="RESEARCH_STATUS_META[p.status].color" variant="subtle">
+              {{ RESEARCH_STATUS_META[p.status].label }}
             </UBadge>
           </div>
 

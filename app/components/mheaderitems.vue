@@ -12,16 +12,16 @@ const items = ref<NavigationMenuItem[][]>([
       to: "/projects",
       children: [
         {
-          label: "personal projects",
-          description: "my personal projects.",
-          icon: "i-lucide-house",
-          to: "/projects/personal",
-        },
-        {
           label: "student projects",
           description: "my projects as a student.",
           icon: "i-lucide-cloud-download",
           to: "/projects/student",
+        },
+        {
+          label: "personal projects",
+          description: "my personal projects.",
+          icon: "i-lucide-house",
+          to: "/projects/personal",
         },
       ],
     },
